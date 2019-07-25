@@ -1,0 +1,28 @@
+body {
+  margin: unset;
+}
+
+h1 {
+  padding-top: 2rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: rgb(87, 84, 84);
+    font-family: 'Josefin Sans', sans-serif;
+    color: white
+  }
+  
+.container {
+  padding: 2rem 1rem;
+}
+.container__image {
+    border: 3px solid black;
+}
