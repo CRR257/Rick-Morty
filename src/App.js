@@ -1,14 +1,22 @@
-import React from 'react';
-import './style.css';
+import React from "react";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import Cards from "./Cards";
+import "./style.css";
 
-function App() {
-  return (
+const client = new ApolloClient({
+  uri: "https://rickandmortyapi.com/graphql"
+});
+
+const App = () => (
+  <ApolloProvider client={client}>
     <div className="App">
-      <header className="App-header">
-      <title>Rick_Morty</title>
-      </header>
+      <h1>RICK AND MORTY</h1>
+      <div className="cards">
+        <Cards />
+      </div>
     </div>
-  );
-}
+  </ApolloProvider>
+);
 
 export default App;
