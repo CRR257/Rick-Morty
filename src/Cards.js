@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import Card from "./Card"
 
 import "./style.css";
 
@@ -26,16 +27,8 @@ const Cards = () => {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;
-        return data.characters.results.map(({ id, image, name, status }) => (
-          <div key={id} className="container">
-            <img className="container__image" src={image} alt="" />
-            <div className="container__info">
-              <p>{name}</p>
-              <p>
-                {status} origin {origin.name}
-              </p>
-            </div>
-          </div>
+        return data.characters.results.map((cardResults) => (
+        <Card card = {cardResults}/>
         ));
       }}
     </Query>
