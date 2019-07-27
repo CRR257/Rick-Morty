@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route } from  'react-router-dom'
 
-import App from './App'
+import App from './App';
 
 const Routes = () => {
     return (

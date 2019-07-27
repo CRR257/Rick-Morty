@@ -4,8 +4,52 @@ body, h3 {
 
 h1 {
   padding: 4rem 0 2rem 0;
+  font-size: 32px;
+  color: #000;
 }
 
+h1:hover {
+  background: none;
+  color: red;
+  font-family: 'Creepster', serif;
+  font-size: 44px;
+  letter-spacing: 5px;
+  line-height: 18px;
+}
+
+h1::before {
+  content: '';
+  background-image:  url('../src/images/pickle.jpg');
+  background-position: 0 30%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100vh;
+  left: 0px;
+  position: absolute;
+  bottom: 19vh;
+  width: 22vw;
+  max-width: 22vw;
+  transform: translateY(100%);
+  transition: transform .3s;
+}
+
+h1:hover::before {
+  transform: translateY(0px);
+}
+
+.container__name {
+  color: white;
+  margin: 1rem;
+}
+
+.container__name:hover {
+  background: none;
+  color: red;
+  font-family: 'Creepster', serif;
+  font-size: 25px;
+  letter-spacing: 5px;
+  line-height: 18px;
+}
 
 .cards {
   display: flex;
@@ -43,14 +87,16 @@ input {
 
 .container {
   padding: 2rem 1rem;
+  cursor: pointer;
 }
 .container__image {
   border: 3px solid black;
 }
 
 .container__info {
-  padding: 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   cursor: pointer;
+  position: relative;
 }
 
 button {
@@ -64,11 +110,39 @@ button {
   cursor: pointer;
 }
 
+.button__disabled {
+  background-color:  #3e3b3b;
+  border: 1px solid #ada6a6;
+  padding: 0.8rem;
+  color: white;
+  border-radius: 0.3px;
+  margin: 2rem 1rem;
+  font-family: unset;
+  opacity: 0.4;
+  cursor: unset;
+}
+
 .footer {
   height: 4rem;
   background-color: #282727;
   padding: 2rem 0 1rem 0;
 }
 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 8px 0 8px 15px;
+  top: 0px;
+  position: absolute;
+  z-index: 1;
+  text-align: left;
+  line-height: 24px;
+}
 
-
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

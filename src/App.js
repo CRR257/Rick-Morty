@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      page: 1,
+      page: 23,
       name: "",
     };
   }
@@ -37,7 +37,6 @@ class App extends React.Component {
   handleNextPage = event => {
     event.preventDefault()
     let pageNumber = this.state.page
-
     pageNumber <=24 ? this.setState({page: pageNumber +1}) : this.setState({page: pageNumber = 24}) 
   }
 
@@ -65,7 +64,6 @@ class App extends React.Component {
     }
       `
    
-
     return (
       <ApolloProvider client={client}>
         <div className="App">
@@ -83,7 +81,7 @@ class App extends React.Component {
               {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p> Error loading page :(</p>;
-                if (data.characters.results === null) return <p>Sorry, we didn't find any search for this result </p>;
+                if (data.characters.results === null) return <p>Sorry, we didn't find any result for this search </p>;
 
                 return data.characters.results.map(cardResults => (
                   <Card card={cardResults} />
@@ -93,8 +91,8 @@ class App extends React.Component {
           </div>
           <div>
             <div>Pag: {this.state.page}</div>
-            <button onClick={this.handleLastPage}>Last Page</button>
-            <button onClick={this.handleNextPage}>Next Page</button>
+            {this.state.page > 1 ? <button onClick={this.handleLastPage}>Last Page</button> : <button className="button__disabled">Last Page</button>}
+            {this.state.page < 24 ? <button onClick={this.handleNextPage}>Next Page</button> : <button className="button__disabled">Next Page</button>}
           </div>
           <Footer />
         </div>
