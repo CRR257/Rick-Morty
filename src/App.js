@@ -19,25 +19,26 @@ class App extends React.Component {
 
     this.state = {
       page: 1,
-      name: ""
+      name: "",
     };
   }
 
-  handleRegisterSubmit = event => {
+  handleSearchSubmit = event => {
     event.preventDefault()
     this.setState({search: event.target.value})
 }
 
-  handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value })
+  handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value, page: 1 })
 
   componentDidMount() {
-    this.setState({ page: this.state.page, name: this.state.name });
+    this.setState({ page: this.state.page, name: this.state.name, characterCount: this.state.totalCharacters });
   }
 
   handleNextPage = event => {
     event.preventDefault()
     let pageNumber = this.state.page
-    pageNumber <=24 ? this.setState({page: pageNumber +1}) : this.setState({page: pageNumber = 25}) 
+
+    pageNumber <=24 ? this.setState({page: pageNumber +1}) : this.setState({page: pageNumber = 24}) 
   }
 
   handleLastPage = event => {
@@ -47,6 +48,7 @@ class App extends React.Component {
   }
 
   render() {
+
     const GET_CHARACTERS = gql`
     {
       characters (page:${this.state.page}, filter: { name: "${this.state.name}" }){
@@ -62,11 +64,13 @@ class App extends React.Component {
       }
     }
       `
+   
+
     return (
       <ApolloProvider client={client}>
         <div className="App">
           <h1>RICK AND MORTY</h1>
-          <form className="search" onSubmit={this.handleRegisterSubmit} >
+          <form className="search" onSubmit={this.handleSearchSubmit} >
               <h3>Search character:</h3>
               <div className="search__input">
                 <input type="text" name="name" onChange={this.handleOnChange} required></input>
@@ -88,7 +92,7 @@ class App extends React.Component {
             </Query>
           </div>
           <div>
-            <div>Pag: {this.state.page} of 25</div>
+            <div>Pag: {this.state.page}</div>
             <button onClick={this.handleLastPage}>Last Page</button>
             <button onClick={this.handleNextPage}>Next Page</button>
           </div>
