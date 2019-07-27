@@ -3,6 +3,7 @@ Rick & Morty :bug:
 ## Introduction
 
 Web to show information about some Rick & Morty's characters.
+You can search by name's character.
 
 ## Available Scripts
 
@@ -22,7 +23,7 @@ React.js && Js && GraphQl && ApolloClient
 
 ## What is GraphQL?
 
-[GraphQl] (https://graphql.org/)  is an open-source query language developed by Facebook. It provides us with a more efficient way design, create, and consume our APIs. Basically, it’s the replacement for REST.
+[GraphQl](https://graphql.org/)  is an open-source query language developed by Facebook. It provides us with a more efficient way design, create, and consume our APIs. Basically, it’s the replacement for REST.
 
 ## Playground for Rick and Morty
 

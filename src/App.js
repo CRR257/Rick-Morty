@@ -18,12 +18,20 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      page: 1
+      page: 1,
+      name: ""
     };
   }
 
+  handleRegisterSubmit = event => {
+    event.preventDefault()
+    this.setState({search: event.target.value})
+}
+
+  handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value })
+
   componentDidMount() {
-    this.setState({ page: this.state.page });
+    this.setState({ page: this.state.page, name: this.state.name });
   }
 
   handleNextPage = event => {
@@ -40,31 +48,38 @@ class App extends React.Component {
 
   render() {
     const GET_CHARACTERS = gql`
-        {
-          characters (page:${this.state.page}){
-            results {
-              id
-              name
-              image
-              status
-              origin {
-                name
-              }
-            }
+    {
+      characters (page:${this.state.page}, filter: { name: "${this.state.name}" }){
+        results {
+          id
+          name
+          image
+          status
+          origin {
+            name
           }
         }
+      }
+    }
       `
     return (
       <ApolloProvider client={client}>
         <div className="App">
           <h1>RICK AND MORTY</h1>
+          <form className="search" onSubmit={this.handleRegisterSubmit} >
+              <h3>Search character:</h3>
+              <div className="search__input">
+                <input type="text" name="name" onChange={this.handleOnChange} required></input>
+              </div>
+          </form>
           <div className="cards">
             <Query
               query={GET_CHARACTERS}
             >
               {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
-                if (error) return <p>Error :(</p>;
+                if (error) return <p> Error loading page :(</p>;
+                if (data.characters.results === null) return <p>Sorry, we didn't find any search for this result </p>;
 
                 return data.characters.results.map(cardResults => (
                   <Card card={cardResults} />
