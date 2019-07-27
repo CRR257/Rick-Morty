@@ -19,3 +19,11 @@ You will also see any lint errors in the console.
 ## Technologies
 
 React.js && Js && GraphQl && ApolloClient
+
+## What is GraphQL?
+
+[GraphQl] (https://graphql.org/)  is an open-source query language developed by Facebook. It provides us with a more efficient way design, create, and consume our APIs. Basically, it’s the replacement for REST.
+
+## Playground for Rick and Morty
+
+https://rickandmortyapi.com/graphql/
