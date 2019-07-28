@@ -25,13 +25,14 @@ class App extends React.Component {
 
   handleSearchSubmit = event => {
     event.preventDefault()
+    debugger
     this.setState({search: event.target.value})
 }
 
-  handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value, page: 1 })
+  handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value, page: 1})
 
   componentDidMount() {
-    this.setState({ page: this.state.page, name: this.state.name, characterCount: this.state.totalCharacters });
+    this.setState({ page: this.state.page, name: this.state.name });              
   }
 
   handleNextPage = event => {
@@ -60,10 +61,14 @@ class App extends React.Component {
             name
           }
         }
+        info {
+          count
+          pages
+        }
       }
     }
       `
-   
+
     return (
       <ApolloProvider client={client}>
         <div className="App">
@@ -83,14 +88,17 @@ class App extends React.Component {
                 if (error) return <p> Error loading page :(</p>;
                 if (data.characters.results === null) return <p>Sorry, we didn't find any result for this search </p>;
 
-                return data.characters.results.map(cardResults => (
-                  <Card card={cardResults} />
-                ));
+                return (
+                  data.characters.results.map(cardResults => (
+                    <Card card={cardResults} />
+                  ))
+                );
               }}
             </Query>
           </div>
           <div>
-            <div>Pag: {this.state.page}</div>
+                
+            <div>Pag: {this.state.page}</div> 
             {this.state.page > 1 ? <button onClick={this.handleLastPage}>Last Page</button> : <button className="button__disabled">Last Page</button>}
             {this.state.page < 24 ? <button onClick={this.handleNextPage}>Next Page</button> : <button className="button__disabled">Next Page</button>}
           </div>
