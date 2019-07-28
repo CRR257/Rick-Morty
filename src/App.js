@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      page: 23,
+      page: 1,
       name: "",
     };
   }
