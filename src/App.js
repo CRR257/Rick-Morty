@@ -20,6 +20,7 @@ class App extends React.Component {
     this.state = {
       page: 1,
       name: "",
+      totalPages: 0
     };
   }
 
@@ -31,9 +32,44 @@ class App extends React.Component {
 
   handleOnChange = ({ target: { name, value } }) => this.setState({ [name]: value, page: 1})
 
+  // componentDidMount() {
+  //   this.setState({ page: this.state.page, name: this.state.name, totalPages: 34 });              
+  // }
+
   componentDidMount() {
-    this.setState({ page: this.state.page, name: this.state.name });              
-  }
+        // if (this.data.characters.info.pages !== 0 ){
+        // const results = this.data.characters.info.map(x => {
+        //   return {
+        //     pages: x.pages
+      
+        //   }
+        // })
+        this.setState({ 
+          page: this.state.page, 
+          name: this.state.name, 
+          // totalPages: results 
+        });
+      }
+      // else {
+      //   return null
+      // }
+       
+  // componentDidUpdate() {
+  //      if (this.data.characters.info.pages !== 0 ){
+  //       const results = this.data.characters.info.map(x => {
+  //         return {
+  //           pages: x.pages
+      
+  //         }
+  //       })
+  //       this.setState({ 
+     
+  //         totalPages: results 
+  //       });
+  //     }
+     
+  // }
+
 
   handleNextPage = event => {
     event.preventDefault()
@@ -82,15 +118,20 @@ class App extends React.Component {
           <div className="cards">
             <Query
               query={GET_CHARACTERS}
-            >
+              
+              >
               {({ loading, error, data }) => {
+             
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p> Error loading page :(</p>;
                 if (data.characters.results === null) return <p>Sorry, we didn't find any result for this search </p>;
+                // if (data.characters.info.pages !== 0 ) return <p>AAAAA</p>
+                
 
                 return (
                   data.characters.results.map(cardResults => (
                     <Card card={cardResults} />
+                  
                   ))
                 );
               }}
