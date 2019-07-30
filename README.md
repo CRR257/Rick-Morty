@@ -1,8 +1,7 @@
----
-permalink: /index.html
----
 
 Rick & Morty :bug:
+
+https://rick-4c1f1.firebaseapp.com/
 
 ## Introduction
 
