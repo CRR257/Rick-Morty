@@ -1,12 +1,12 @@
+# Rick & Morty :beer:_ :clapper:_ :beer:
 
-#Rick & Morty :clapper: _ :clapper:
-
-https://rickmortyweb.web.app/
 
 ## Introduction
 
-Web to show information about some Rick & Morty's characters.
-You can search by name's character.
+Web to show information about some Rick & Morty's characters.<br/>
+User can search by name's character.
+
+https://rickmortyweb.web.app/
 
 ## Available Scripts
 
