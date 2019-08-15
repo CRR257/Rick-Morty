@@ -1,4 +1,4 @@
-# Rick & Morty :beer:_ :clapper:_ :beer:
+# Rick & Morty :beer:_ :clapper: _ :beer:
 
 
 ## Introduction
