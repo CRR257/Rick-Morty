@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './Routes';
+import App from './App';
 import * as registerServiceWorker from './registerServiceWorker';
 
-
-ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker.unregister();
-
