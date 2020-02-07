@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import GET_CHARACTERS from '../query/Query';
 import Card from "./Card";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
@@ -12,34 +12,15 @@ const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql"
 });
 
-const GET_CHARACTERS = gql`
-  {
-    characters{
-      results {
-        id
-        name
-        image
-        status
-        origin {
-          name
-        }
-      }
-      info {
-        count
-        pages
-      }
-    }
-  }
-`;
-
 const Home = props => {
-  const [searchInput, setSearchInput] = useState("");
+  const [character, setCharacter] = useState("");
   const [placeholder, setPlaceholder] = useState("Search a character...");
+  const [page, setPage] = useState(1);
 
   const searchUserHandler = event => {
     const userInput = event.target.value;
-    setSearchInput(userInput);
-
+    setCharacter(userInput);
+    setPage(1);
     if (userInput === "") {
       setPlaceholder("Search a character...");
     }
@@ -53,21 +34,46 @@ const Home = props => {
           onChangeHandler={searchUserHandler}
           placeholder={placeholder}
         />
-        <div className="cards">
-          <Query query={GET_CHARACTERS} search={searchInput}>
-            {({ loading, error, data }) => {
+        <div>
+          <Query query={GET_CHARACTERS} variables={{ page, character }}>
+            {({
+              loading,
+              error,
+              data: {
+                characters: {
+                  info: { next, prev, pages, count } = {},
+                  results
+                } = {}
+              } = {}
+            }) => {
               if (loading) return <p>Loading...</p>;
-              if (error) return <p> Error loading page :(</p>;
-              if (data.characters.results === null)
-                return <p>Sorry, we didn't find any result for this search </p>;
-
-              return data.characters.results.map(cardResults => (
-                <Card card={cardResults} />
-              ));
+              if (error) return <p className="error"> Error loading page :(</p>;
+              next = next ? next : pages;
+              prev = prev ? prev : 1;
+              return (
+                <div className="cards">
+                  {results ? (
+                    results.map(cardResults => <Card card={cardResults} />)
+                  ) : (
+                    <p className="error">Sorry, we didn't find any result for this search</p>
+                  )}
+                  {results && <div>
+                    <button disabled={page === 1} onClick={() => setPage(prev)}>
+                      Less
+                    </button>
+                    {page} on {pages}
+                    <button
+                      disabled={page === pages}
+                      onClick={() => setPage(next)}
+                    >
+                      More
+                    </button>
+                  </div>}
+                </div>
+              );
             }}
           </Query>
         </div>
-        <div></div>
         <Footer />
       </div>
     </ApolloProvider>

@@ -1,16 +1,26 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 
+const client = new ApolloClient({
+  uri: "https://rickandmortyapi.com/graphql/"
+});
+
 const App = () => {
-  return (
-    <Router>
-      <Route exact path="/">
-        <Home />
-      </Route>
-    </Router>
-  );
-};
+
+    return (
+      <div className="App">
+        <ApolloProvider client={client}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </ApolloProvider>
+      </div>
+    );
+  
+}
 
 export default App;
 

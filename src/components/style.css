@@ -9,12 +9,10 @@ h1 {
 }
 
 h1:hover {
-  background: none;
-  color: red;
   font-family: 'Creepster', serif;
-  font-size: 44px;
-  letter-spacing: 5px;
-  line-height: 18px;
+  letter-spacing: 8px;
+  padding: 3.6rem 0 2rem 0;
+  font-size: 32px;
 }
 
 .container__name {
@@ -46,23 +44,15 @@ h1:hover {
     margin-top: -2rem;
   }
 
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0 2rem;
-}
-
-.search__input {
-  margin: 0 1rem;
-}
-
 input {
-  height: 23px;
-  font-size: 14px;
-  text-indent: 3px;
-  border: 1px solid #ada6a6;
-  font-family: 'Josefin Sans', sans-serif;
+  height: 29px;
+    width: 250px;
+    font-size: 14px;
+    text-indent: 5px;
+    border: 2px solid #060606;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 1rem 0 2rem 0;
+    border-radius: 4px;
 }
 
 .container {
@@ -80,26 +70,14 @@ input {
 }
 
 button {
-  background-color: #3e3b3b;
-  border: 1px solid #ada6a6;
+  background-color: #5e5e5e;
+  border: 2px solid #000000;
   padding: 0.8rem;
-  color: white;
   border-radius: 0.3px;
   margin: 2rem 1rem;
   font-family: unset;
   cursor: pointer;
-}
-
-.button__disabled {
-  background-color:  #3e3b3b;
-  border: 1px solid #ada6a6;
-  padding: 0.8rem;
-  color: white;
-  border-radius: 0.3px;
-  margin: 2rem 1rem;
-  font-family: unset;
-  opacity: 0.4;
-  cursor: unset;
+  font-size: 15px;
 }
 
 .footer {
@@ -125,4 +103,8 @@ button {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.error {
+  padding: 5rem;
 }
