@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
-import { Query } from "react-apollo";
+import React, { useState } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+import { Query } from 'react-apollo';
 import GET_CHARACTERS from '../query/Query';
-import Card from "./Card";
-import Footer from "./Footer";
-import SearchBar from "./SearchBar";
-import "./style.css";
+import Card from './Card';
+import Footer from './Footer';
+import SearchBar from './SearchBar';
+import './style.css';
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql"

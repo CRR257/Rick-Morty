@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const GET_CHARACTERS = gql`
   query($character: String!, $page: Int!) {
