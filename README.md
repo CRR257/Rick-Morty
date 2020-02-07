@@ -17,10 +17,6 @@ npm start
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Technologies
-
-React.js && Js && GraphQl && ApolloClient && Firebase
-
 ## What is GraphQL?
 
 [GraphQl](https://graphql.org/)  is an open-source query language developed by Facebook. It provides us with a more efficient way design, create, and consume our APIs. Basically, it’s the replacement for REST.
@@ -28,3 +24,7 @@ React.js && Js && GraphQl && ApolloClient && Firebase
 ## Playground for Rick and Morty
 
 https://rickandmortyapi.com/graphql/
+
+## Technologies
+
+React.js && Js && GraphQl && ApolloClient && Firebase
