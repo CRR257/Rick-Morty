@@ -1,0 +1,13 @@
+.header {
+    height: 40px;
+    padding: 1rem;
+  &-title {
+    font-size: 32px;
+    color: #000;
+  }
+  &-title:hover {
+    font-family: "Creepster", serif;
+    letter-spacing: 8px;
+    font-size: 32px;
+  }
+}

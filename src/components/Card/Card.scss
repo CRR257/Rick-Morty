@@ -1,0 +1,49 @@
+.container {
+  &-image {
+    border: 2px solid black;
+    width: 250px;
+    padding: 1px;
+  }
+
+  &-information {
+    padding: 1rem 1rem 1.5rem 1rem;
+    cursor: pointer;
+    position: relative;
+    height: 300px;
+  }
+
+  &-name {
+    color: white;
+    margin: 1rem;
+    max-width: 214px;
+    letter-spacing: 1.2px;
+  }
+  &-name:hover {
+    color: #f6f2f2;
+    font-family: "Creepster", serif;
+    font-size: 20px;
+    letter-spacing: 5px;
+    line-height: 22px;
+    margin: 10px auto;
+    justify-content: center;
+  }
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 8px 0 8px 15px;
+  top: 0px;
+  position: absolute;
+  z-index: 1;
+  text-align: left;
+  line-height: 24px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

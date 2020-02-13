@@ -27,4 +27,4 @@ https://rickandmortyapi.com/graphql/
 
 ## Technologies
 
-React.js && Js && GraphQl && ApolloClient && Firebase
+React.js && Js && GraphQl && ApolloClient && Sass && Firebase

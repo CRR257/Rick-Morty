@@ -1,0 +1,13 @@
+.container {
+  padding-top: 2rem;
+  &-feedback {
+    height: 15rem;
+    padding: 5rem;
+  }
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 8rem 0rem 8rem;
+}
